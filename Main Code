@@ -1,0 +1,71 @@
+#include <kipr/wombat.h>
+//DECLARE FUNCTIONS
+void forward();
+void Lshimmie();
+void turn();
+void Rshimmie();
+void followall(); 
+//DECLARE VARIABLES
+int lmotor=3; 
+int rmotor=0;
+int midspeed=55;
+int hspeed=85;
+int lspeed=35;
+int tspeed=95;
+int fronteye=0;
+int sideeye=5;
+int counter=0;
+
+int main()
+{
+   
+    followall(); 
+    ao();	//Stop 
+    turn();
+    followall();
+    
+    return 0;
+}
+
+void forward()
+{
+    motor(rmotor,midspeed); 	//starboard motor 50% power
+    motor(lmotor,hspeed); 	//port motor 75% power
+}
+        
+void Lshimmie()
+{
+    motor(rmotor, hspeed);	//starboard motor 75%
+    motor(lmotor, midspeed);	//port motor 50%
+}
+
+void Rshimmie()
+{
+    motor(rmotor, lspeed);	//starboard motor 35%
+    motor(lmotor, tspeed);	//port motor 95%
+}
+        
+void turn()
+{
+    motor(rmotor, hspeed);  //starboard motor 75%
+    motor(lmotor, -hspeed);  //port motor -75%
+    msleep(500);	//turn lasts 0.5sec 
+}
+void followall()
+{
+     while(analog(fronteye) < 2700)
+    {
+        
+            forward(); 
+        
+        if(analog(sideeye) > 2750)
+        {
+            Lshimmie();
+        }
+        if(analog(sideeye) < 2550)
+        {
+         	Rshimmie();   
+          }
+        
+    }
+}
