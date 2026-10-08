@@ -53,16 +53,16 @@ void turn()
 }
 void followall()
 {
-     while(analog(fronteye) < 2700)
+     while(analog(fronteye) < 2700)   //when the front sensor distance is less than 2700(far from wall)
     {
         
             forward(); 
         
-        if(analog(sideeye) > 2750)
+        if(analog(sideeye) > 2750)   //if the side sensor value is more than 2750(close to wall)
         {
             Lshimmie();
         }
-        if(analog(sideeye) < 2550)
+        if(analog(sideeye) < 2550)   //if the side seensor value is less than 2550(far from wall)
         {
          	Rshimmie();   
           }
