@@ -12,9 +12,8 @@ int midspeed=55;
 int hspeed=85;
 int lspeed=35;
 int tspeed=95;
-int fronteye=0;
-int sideeye=5;
-int counter=0;
+int fronteye=0;   //front sensor in port 0
+int sideeye=5;   //side sensor in port 5
 
 int main()
 {
